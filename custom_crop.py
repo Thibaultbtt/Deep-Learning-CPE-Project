@@ -40,6 +40,8 @@ for index, image_file in enumerate(fichiers_images):
                         print(f"Coordonnées invalides dans {coord_file}, ligne {i + 1}")
                         continue
 
+                    img_type = data[-2]
+
                     # Calcul des coordonnées absolues du rectangle (x_min, y_min, x_max, y_max)
                     x_min = int(round(float(data[2])))
                     y_min = int(round(float(data[1])))
@@ -50,7 +52,7 @@ for index, image_file in enumerate(fichiers_images):
                     cropped_img = img.crop((x_min, y_min, x_max, y_max))
                     
                     # Sauvegarder l'image cropée
-                    crop_file_name = f"crop_{index + 1}_{i + 1}.jpg"
+                    crop_file_name = f"{img_type}_{index + 1}_{i + 1}.jpg"
                     crop_path = os.path.join(dossier_crops, crop_file_name)
                     cropped_img.save(crop_path, "JPEG")
                     print(f"Image cropée enregistrée : {crop_path}")
