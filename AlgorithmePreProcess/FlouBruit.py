@@ -4,12 +4,6 @@ from PIL import Image, ImageFilter
 import os
 import random
 
-def apply_gaussian_blur(img, kernel_size=5):
-    """
-    Applique un flou gaussien à une image.
-    """
-    return cv2.GaussianBlur(img, (kernel_size, kernel_size), 0)
-
 def add_gaussian_noise(img, mean=0, std=25):
     """
     Ajoute un bruit gaussien à une image.
@@ -43,14 +37,8 @@ def process_images_with_effects(source_dir, target_dir, apply_blur=True, apply_n
                 # Convertir en BGR pour OpenCV
                 img_cv = cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR)
 
-                # Appliquer flou gaussien
-                # if apply_blur and random.random() < 0.3:  # 50% de chances d'ajouter un flou
-                #     kernel_size = random.choice([3, 5, 7])  # Taille du noyau aléatoire
-                #     kernel_size = 3  # Taille du noyau fixe
-                #     img_cv = apply_gaussian_blur(img_cv, kernel_size=kernel_size)
-
                 # Appliquer bruit gaussien
-                if apply_noise and random.random() > 0.3:  # 50% de chances d'ajouter du bruit
+                if apply_noise and random.random() > 0.5:  # 50% de chances d'ajouter du bruit
                     img_cv = add_gaussian_noise(img_cv, mean=0, std=random.randint(15, 40))
 
                 # Convertir en RGB et sauvegarder
@@ -59,7 +47,7 @@ def process_images_with_effects(source_dir, target_dir, apply_blur=True, apply_n
                 print(f"Processed and saved: {save_path}")
 
 # Répertoires
-source_directory = "./Deep-Learning-Cpe-Project/AlgorithmePreProcess/resized_images"  # Changez avec votre chemin
+source_directory = "./Deep-Learning-Cpe-Project/AlgorithmePreProcess/source_images"  # Changez avec votre chemin
 target_directory = "./Deep-Learning-Cpe-Project/AlgorithmePreProcess/final_images"  # Répertoire cible
 
 # Appliquer flou et bruit
