@@ -4,3 +4,4 @@ dataset_part_2
 .venv
 gray_images
 rotated_gray_images
+train_rotated_gray_images
