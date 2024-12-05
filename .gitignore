@@ -1,11 +1,4 @@
 TP3.ipynb
 result
 .venv
-gray_images
-rotated_gray_images
-train_rotated_gray_images
-train_prepared_images
-test_prepared_images
-validation_prepared_images
-noise_images
-resized_images
+preprocessed_data

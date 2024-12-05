@@ -1,10 +1,24 @@
 import os
 from PIL import Image
 
-def crop_images (dossier_crops, dossier_coordonnees, dossier_images) :
-    # Obtenir les listes triées des fichiers dans les dossiers
-    fichiers_images = sorted(os.listdir(dossier_images))
-    fichiers_coordonnees = sorted(os.listdir(dossier_coordonnees))
+Image.MAX_IMAGE_PIXELS = None  # Supprime complètement la limite
+
+# Chemins des dossiers
+dossier_images = "./dataset_part_2/train/images"  # Chemin vers le dossier contenant les images
+dossier_coordonnees = "./dataset_part_2/train/labelTxt"  # Chemin vers le dossier contenant les fichiers de coordonnées
+dossier_crops = "./result"  # Dossier de sortie pour les images cropées
+
+# Chemin pour raph
+dossier_images = "./Deep-Learning-Cpe-Project/dataset_part_2/train/images"  # Chemin vers le dossier contenant les images
+dossier_coordonnees = "./Deep-Learning-Cpe-Project/dataset_part_2/train/labelTxt"  # Chemin vers le dossier contenant les fichiers de coordonnées
+dossier_crops = "./Deep-Learning-Cpe-Project/result"  # Dossier de sortie pour les images cropées
+
+# Créer le dossier de sortie s'il n'existe pas
+os.makedirs(dossier_crops, exist_ok=True)
+
+# Obtenir les listes triées des fichiers dans les dossiers
+fichiers_images = sorted(os.listdir(dossier_images))
+fichiers_coordonnees = sorted(os.listdir(dossier_coordonnees))
 
     # Vérifier si les deux dossiers ont le même nombre de fichiers
     if len(fichiers_images) != len(fichiers_coordonnees):
